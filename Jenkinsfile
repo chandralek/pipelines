@@ -2,9 +2,12 @@ pipeline {
     agent any
 
     stages {
-
         stage('One') {
-            print "Hello World"
+            steps{
+                script{
+                    print "Hello World"
+                }
+            }
         }
 
     }
