@@ -11,7 +11,7 @@ pipeline {
             steps{
                 script{
                     print " Course = " +COURSE_NAME
-                    print " Time = " +COURSE_NAME
+                    print " Time = " +TIMING
                 }
             }
         }
