@@ -30,6 +30,21 @@ pipeline {
         }
       }
 
+      stage('multistage') {
+        parallel{
+          stage(mutlistage1){
+            steps{
+              sh 'echo Hello from stage 2'
+            }
+          }
+          stage(mutlistage2){
+            steps{
+              sh 'echo Hello from stage 2'
+            }
+          }
+        }
+
+      }
     }
 
 }
