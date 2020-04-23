@@ -7,7 +7,7 @@ pipeline {
 
   parameters {
     string(name: 'TIMING', defaultValue: '', description: 'TIMING')
-    booleanParam(name: 'TIMING', defaultValue: '', description: 'Run 2?')
+    booleanParam(name: 'YES', defaultValue: '', description: 'Run 2?')
   }
 
     stages {
@@ -21,11 +21,11 @@ pipeline {
         }
 
       stage('Two') {
+        when {
+          // Only say hello if a "greeting" is requested
+          expression { return  params.YES}
+        }
         steps{
-          when {
-            // Only say hello if a "greeting" is requested
-            expression { return  params.TIMING}
-          }
           sh 'Hello from stage 2'
         }
       }
