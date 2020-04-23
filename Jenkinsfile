@@ -26,7 +26,7 @@ pipeline {
           expression { return  params.YES}
         }
         steps{
-          sh 'Hello from stage 2'
+          sh 'echo Hello from stage 2'
         }
       }
 
