@@ -9,6 +9,7 @@ pipeline {
                 params.ACTION == 'APPLY'
                 }
             }
+            stages{
             stage('VPC'){
                 steps{
                     build job: 'vpc', parameters: [string(name: 'ACTION', value: "${ACTION}")]
@@ -26,6 +27,7 @@ pipeline {
                         }
 
         }
+        }
 
         stage('DESTROY') {
             when{
@@ -33,6 +35,7 @@ pipeline {
                 params.ACTION == 'DESTROY'
                 }
             }
+            stages{
              stage('VPC'){
                             steps{
                                 build job: 'vpc', parameters: [string(name: 'ACTION', value: "${ACTION}")]
@@ -48,6 +51,7 @@ pipeline {
                                             build job: 'mongodb', parameters: [string(name: 'ACTION', value: "${ACTION}")]
                                             }
                                     }
+        }
         }
 }
 }
