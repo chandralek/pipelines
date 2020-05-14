@@ -1,0 +1,53 @@
+pipeline {
+    agent {
+        label 'SLAVE'
+    }
+    stages{
+        stage('CREATE') {
+            when {
+            expression {
+                params.ACTION == 'APPLY'
+                }
+            }
+            stage('VPC'){
+                steps{
+                    build job: 'vpc', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                    }
+            }
+            stage('Route53'){
+                            steps{
+                                build job: 'route53', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                                }
+                        }
+            stage('MONGODB'){
+                            steps{
+                                build job: 'mongodb', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                                }
+                        }
+
+        }
+
+        stage('DESTROY') {
+            when{
+                expression {
+                params.ACTION == 'DESTROY'
+                }
+            }
+             stage('VPC'){
+                            steps{
+                                build job: 'vpc', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                                }
+                        }
+                        stage('Route53'){
+                                        steps{
+                                            build job: 'route53', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                                            }
+                                    }
+                        stage('MONGODB'){
+                                        steps{
+                                            build job: 'mongodb', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                                            }
+                                    }
+        }
+}
+}
