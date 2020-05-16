@@ -25,6 +25,23 @@ pipeline {
                                 build job: 'mongodb', parameters: [string(name: 'ACTION', value: "${ACTION}")]
                                 }
                         }
+            stage('elasticcache'){
+                                        steps{
+                                            build job: 'elasticcache', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                                            }
+                                    }
+            stage('rabbitmq'){
+                 steps{
+                     build job: 'rabbitmq', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+
+                     }
+                         }
+             stage('rdsmysql'){
+                             steps{
+                                 build job: 'rabbitmq', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+
+                                 }
+                                     }
 
         }
         }
@@ -36,6 +53,24 @@ pipeline {
                 }
             }
             stages{
+            stage('elasticcache'){
+                                                    steps{
+                                                        build job: 'elasticcache', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                                                        }
+                                                }
+                        stage('rabbitmq'){
+                             steps{
+                                 build job: 'rabbitmq', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+
+                                 }
+                                     }
+                         stage('rdsmysql'){
+                                         steps{
+                                             build job: 'rabbitmq', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+
+                                             }
+                                                 }
+
             stage('MONGODB'){
                    steps{
                      build job: 'mongodb', parameters: [string(name: 'ACTION', value: "${ACTION}")]
