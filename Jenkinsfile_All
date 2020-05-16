@@ -36,22 +36,22 @@ pipeline {
                 }
             }
             stages{
-             stage('VPC'){
-                            steps{
-                                build job: 'vpc', parameters: [string(name: 'ACTION', value: "${ACTION}")]
-                                }
+            stage('MONGODB'){
+                   steps{
+                     build job: 'mongodb', parameters: [string(name: 'ACTION', value: "${ACTION}")]
                         }
-                        stage('Route53'){
-                                        steps{
-                                            build job: 'route53', parameters: [string(name: 'ACTION', value: "${ACTION}")]
-                                            }
-                                    }
-                        stage('MONGODB'){
-                                        steps{
-                                            build job: 'mongodb', parameters: [string(name: 'ACTION', value: "${ACTION}")]
-                                            }
-                                    }
-        }
+                 }
+             stage('Route53'){
+                     steps{
+                        build job: 'route53', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                       }
+                 }
+             stage('VPC'){
+               steps{
+                 build job: 'vpc', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+                     }
+              }
+       }
         }
 }
 }
