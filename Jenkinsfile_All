@@ -42,6 +42,12 @@ pipeline {
 
                     }
                   }
+             stage('ec2'){
+                steps{
+                build job: 'ec2', parameters: [string(name: 'ACTION', value: "${ACTION}")]
+
+                }
+             }
 
         }
         }
