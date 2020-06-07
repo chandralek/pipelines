@@ -65,7 +65,12 @@ pipeline {
             }
             stages{
 
+               stage('alb'){
+                            steps{
+                             build job: 'alb', parameters: [string(name: 'ACTION', value: "${ACTION}")]
 
+                               }
+                               }
             stage('ec2'){
                             steps{
                             build job: 'ec2', parameters: [string(name: 'ACTION', value: "${ACTION}")]
