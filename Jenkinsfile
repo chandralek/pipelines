@@ -12,12 +12,15 @@ pipeline {
   }
 
     stages {
+
       stage('Clone Branch') {
-        dir('app'){
-          checkout([$class: 'GitSCM', branches: [[name: '*/${BRANCH}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitUserPass', url: 'https://github.com/chandralek/learning.git']]])
+        steps {
+          dir('app') {
+            checkout([$class: 'GitSCM', branches: [[name: '*/${BRANCH}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitUserPass', url: 'https://github.com/chandralek/learning.git']]])
+          }
         }
       }
-      
+
       stage('One') {
         steps{
           script{
