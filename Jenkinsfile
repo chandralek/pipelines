@@ -15,7 +15,9 @@ pipeline {
     }
     stage(''){
       steps{
-        echo 'hi'
+        script{
+          readFile "${env.WORKSPACE}/branch.txt"
+        }
       }
     }
   }
