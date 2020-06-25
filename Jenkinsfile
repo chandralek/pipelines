@@ -16,7 +16,7 @@ pipeline {
     stage(''){
       steps{
         script{
-          readFile "${env.WORKSPACE}/branch.txt"
+          readFile "${env.WORKSPACE}/app/branch.txt"
         }
       }
     }
