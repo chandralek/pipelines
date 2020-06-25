@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  parameters {
+    choiceParam('BRANCH_NAME',${list},'Pick something')
+  }
+
   stages {
 
     stage('Dynamically generate branches') {
@@ -17,9 +21,7 @@ pipeline {
       steps{
         script{
           list = readFile "${env.WORKSPACE}/app/branch.txt"
-          parameters {
-            choiceParam('BRANCH_NAME',${list},'Pick something')
-          }
+
         }
       }
     }
