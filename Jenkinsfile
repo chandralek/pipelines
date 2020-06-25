@@ -6,13 +6,13 @@ pipeline {
     stage('Dynamically generate branches') {
       steps {
         dir('app') {
-          git url:"https://github.com/chandralek/learning.git" ,credentialsId: "GitUserPass"
+          git url: "https://github.com/chandralek/learning.git", credentialsId: "GitUserPass"
           sh '''
-          git branch -r  | awk -F '/' '{print $2}' |sed -n '1,$ p' > branches.txt
-          cat branches.txt
+          git branch -r  | awk -F '/' '{print $2}' |sed -n '2,$ p' > branches.txt
           '''
-
         }
+          liste = readFile 'app/branches.txt'
+
       }
     }
   }
