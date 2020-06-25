@@ -18,7 +18,7 @@ pipeline {
         script{
           list = readFile "${env.WORKSPACE}/app/branch.txt"
           parameters {
-            choiceParam('BRANCH_NAME',"${list}",'Pick something')
+            choiceParam('BRANCH_NAME',${list},'Pick something')
           }
         }
       }
