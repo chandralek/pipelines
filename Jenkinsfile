@@ -15,7 +15,7 @@ pipeline {
     }
     stage(''){
       steps{
-        liste = readFile 'branch.txt'
+        echo 'hi'
       }
     }
   }
