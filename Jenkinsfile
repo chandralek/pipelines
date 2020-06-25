@@ -16,8 +16,8 @@ pipeline {
     stage(''){
       steps{
         script{
-          liste = readFile "${env.WORKSPACE}/app/branch.txt"
-          parameters: [choice(name: 'BRANCH_NAME', choices: "${liste}", description: 'Branch to build?')]
+          list = readFile "${env.WORKSPACE}/app/branch.txt"
+          parameters: [choice(name: 'BRANCH_NAME', choices: "${list}", description: 'Branch to build?')]
         }
       }
     }
