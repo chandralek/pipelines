@@ -13,7 +13,7 @@ pipeline {
         }
       }
     }
-    stage('Parameter'){
+    stage('Parameterl'){
       steps{
         script{
           list = readFile "${env.WORKSPACE}/app/branch.txt"
