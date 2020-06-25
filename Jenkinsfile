@@ -17,6 +17,7 @@ pipeline {
       steps{
         script{
           readFile "${env.WORKSPACE}/app/branch.txt"
+          parameters: [choice(name: 'BRANCH_NAME', choices: "${liste}", description: 'Branch to build?')]
         }
       }
     }
